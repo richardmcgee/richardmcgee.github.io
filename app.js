@@ -40,7 +40,7 @@
         vy: (Math.random() - 0.5) * 0.3,
         radius: Math.random() * 1.5 + 0.5,
         color: Math.random() > 0.7 
-          ? (Math.random() > 0.5 ? 'rgba(255, 77, 46, 0.6)' : 'rgba(125, 155, 118, 0.5)')
+          ? (Math.random() > 0.5 ? 'rgba(45, 155, 110, 0.6)' : 'rgba(107, 176, 152, 0.5)')
           : 'rgba(245, 240, 232, 0.15)',
         baseX: 0,
         baseY: 0,
@@ -101,8 +101,8 @@
     // Draw connections between close particles
     const connectionDist = 120;
     const accentLine = document.documentElement.getAttribute('data-theme') === 'light'
-      ? 'rgba(212, 57, 30, ALPHA)'
-      : 'rgba(255, 77, 46, ALPHA)';
+      ? 'rgba(31, 122, 84, ALPHA)'
+      : 'rgba(45, 155, 110, ALPHA)';
     const defaultLine = document.documentElement.getAttribute('data-theme') === 'light'
       ? 'rgba(10, 10, 10, ALPHA)'
       : 'rgba(245, 240, 232, ALPHA)';
@@ -114,7 +114,7 @@
         const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < connectionDist) {
           const alpha = ((1 - dist / connectionDist) * 0.12).toFixed(3);
-          const isAccent = particles[i].color.includes('255, 77') || particles[j].color.includes('255, 77');
+          const isAccent = particles[i].color.includes('45, 155') || particles[j].color.includes('45, 155');
           ctx.strokeStyle = isAccent 
             ? accentLine.replace('ALPHA', alpha) 
             : defaultLine.replace('ALPHA', alpha);
