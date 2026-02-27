@@ -306,4 +306,104 @@
 
   sections.forEach(s => sectionObserver.observe(s));
 
+
+  // ── Easter Egg: Konami Code ────────────────────────────────
+  // ↑↑↓↓←→←→BA unlocks a hidden academic achievement
+  const konamiSequence = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+  let konamiIndex = 0;
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === konamiSequence[konamiIndex]) {
+      konamiIndex++;
+      if (konamiIndex === konamiSequence.length) {
+        konamiIndex = 0;
+        showEasterEgg();
+      }
+    } else {
+      konamiIndex = 0;
+    }
+  });
+
+  function showEasterEgg() {
+    // Create toast notification
+    const toast = document.createElement('div');
+    toast.className = 'easter-toast';
+    toast.innerHTML = `
+      <div class="easter-toast__icon">&#127942;</div>
+      <div class="easter-toast__content">
+        <strong class="easter-toast__title">Achievement Unlocked</strong>
+        <span class="easter-toast__subtitle mono">You clearly know your way around a keyboard.</span>
+        <span class="easter-toast__pvalue mono">p &lt; 0.001</span>
+      </div>
+    `;
+    document.body.appendChild(toast);
+
+    // Trigger entrance
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        toast.classList.add('easter-toast--visible');
+      });
+    });
+
+    // Remove after 5s
+    setTimeout(() => {
+      toast.classList.remove('easter-toast--visible');
+      setTimeout(() => toast.remove(), 600);
+    }, 5000);
+  }
+
+
+  // ── Easter Egg: Console Message ────────────────────────────
+  console.log(
+    '%c\n  PEER REVIEW NOTICE\n\n' +
+    '  Manuscript: "style.css"\n' +
+    '  Status: Accepted with minor revisions\n\n' +
+    '  Reviewer 1: "Elegant use of CSS variables.\n' +
+    '  However, the author should justify the choice\n' +
+    '  of border-radius: 4px over 3px. Please provide\n' +
+    '  a 95%% confidence interval."\n\n' +
+    '  Reviewer 2: "Reject. Needs more gradients."\n\n' +
+    '  Editor\'s note: Reviewer 2 still uses Comic Sans.\n\n' +
+    '  ─────────────────────────────────────────\n' +
+    '  Built by Prof. Richard McGee\n' +
+    '  ORCID: 0000-0002-3125-8253\n' +
+    '  Try the Konami code. ↑↑↓↓←→←→BA\n\n',
+    'color: #2d9b6e; font-family: monospace; font-size: 12px; line-height: 1.6;'
+  );
+
+
+  // ── Easter Egg: Click the "RM" logo 5 times ───────────────
+  let logoClickCount = 0;
+  let logoClickTimer;
+  const logo = document.querySelector('.nav__logo');
+
+  logo.addEventListener('click', (e) => {
+    // Only count clicks when already at the top
+    if (window.scrollY < 100) {
+      logoClickCount++;
+      clearTimeout(logoClickTimer);
+      logoClickTimer = setTimeout(() => { logoClickCount = 0; }, 2000);
+
+      if (logoClickCount >= 5) {
+        logoClickCount = 0;
+        // Briefly swap the decorative section line numbers to academic jokes
+        const lineNums = document.querySelectorAll('.section__line-num');
+        const jokes = ['n=1', 'β=.8', 'r²≈1', 'df=∞', 'H₀:☕', 'α=.05', 'OR>1', 'NNT=2', 'IRR?'];
+        const originals = [];
+        lineNums.forEach((el, i) => {
+          originals.push(el.textContent);
+          el.textContent = jokes[i] || jokes[0];
+          el.style.color = 'var(--accent)';
+        });
+        // Revert after 4 seconds
+        setTimeout(() => {
+          lineNums.forEach((el, i) => {
+            el.textContent = originals[i];
+            el.style.color = '';
+          });
+        }, 4000);
+      }
+    }
+  });
+
 })();
