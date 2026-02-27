@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professor Richard McGee — Paediatric Endocrinologist &amp; Researcher</title>
+  <meta name="description" content="Academic profile of Professor Richard McGee, Chair of Paediatrics & Child Health, University of Newcastle. Paediatric Endocrinologist, researcher, and educator.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <a href="#hero" class="nav__logo" aria-label="Home">RM</a>
+    <div class="nav__links">
+      <a href="#about" class="nav__link">About</a>
+      <a href="#research" class="nav__link">Research</a>
+      <a href="#publications" class="nav__link">Publications</a>
+      <a href="#grants" class="nav__link">Grants</a>
+      <a href="#phd" class="nav__link">PhD Opportunities</a>
+      <a href="#contact" class="nav__link">Contact</a>
+    </div>
+    <div class="nav__right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
+        <span class="theme-toggle__icon theme-toggle__icon--dark">☽</span>
+        <span class="theme-toggle__icon theme-toggle__icon--light">☀</span>
+      </button>
+      <button class="nav__hamburger" id="navHamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" class="mobile-menu__link">About</a>
+    <a href="#research" class="mobile-menu__link">Research</a>
+    <a href="#publications" class="mobile-menu__link">Publications</a>
+    <a href="#grants" class="mobile-menu__link">Grants</a>
+    <a href="#phd" class="mobile-menu__link">PhD Opportunities</a>
+    <a href="#contact" class="mobile-menu__link">Contact</a>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <canvas class="hero__canvas" id="heroCanvas"></canvas>
+    <div class="hero__content">
+      <div class="hero__line-num" aria-hidden="true">001</div>
+      <h1 class="hero__name">
+        <span class="hero__name-line">Professor</span>
+        <span class="hero__name-line hero__name-line--accent">Richard</span>
+        <span class="hero__name-line">McGee</span>
+      </h1>
+      <div class="hero__meta">
+        <p class="hero__subtitle">Chair of Paediatrics &amp; Child Health</p>
+        <span class="hero__separator" aria-hidden="true">/</span>
+        <p class="hero__subtitle">Paediatric Endocrinologist</p>
+      </div>
+      <p class="hero__affiliation">University of Newcastle · School of Medicine and Public Health</p>
+      <p class="hero__tagline">Advancing paediatric outcomes through clinical research, open science, and evidence-based medicine.</p>
+      <div class="hero__scroll-cue" aria-hidden="true">
+        <span class="hero__scroll-line"></span>
+        <span class="hero__scroll-text mono">scroll</span>
+      </div>
+    </div>
+    <div class="hero__decoration" aria-hidden="true">
+      <span class="mono">// 2026</span>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section about" id="about" data-deco="About">
+    <div class="section__header">
+      <span class="section__line-num mono" aria-hidden="true">002</span>
+      <span class="section__comment mono" aria-hidden="true">/* about */</span>
+      <h2 class="section__title">About</h2>
+    </div>
+    <div class="about__grid">
+      <div class="about__col about__col--main reveal">
+        <p class="about__lead">A career dedicated to advancing paediatric outcomes and delivering exceptional care for children with chronic and complex conditions.</p>
+        <p>Paediatric Endocrinologist at John Hunter Children's Hospital, with previous leadership of services for Central Coast and South Western Sydney Local Health Districts. An educator recognised with multiple teaching awards and a senior instructor for the Royal Australasian College of Physicians.</p>
+        <p>PhD from the University of Sydney focused on improving health outcomes for children with chronic kidney disease. Founding member of the paediatric research group SWITCH at Western Sydney University.</p>
+      </div>
+      <div class="about__col about__col--side reveal">
+        <div class="about__stat">
+          <span class="about__stat-number">116</span>
+          <span class="about__stat-label mono">publications</span>
+        </div>
+        <div class="about__stat">
+          <span class="about__stat-number">$2.3M+</span>
+          <span class="about__stat-label mono">grant funding</span>
+        </div>
+        <div class="about__stat">
+          <span class="about__stat-number">5+</span>
+          <span class="about__stat-label mono">PhD completions</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Research Interests -->
+  <section class="section research" id="research" data-deco="Research">
+    <div class="section__header">
+      <span class="section__line-num mono" aria-hidden="true">003</span>
+      <span class="section__comment mono" aria-hidden="true">// research_interests</span>
+      <h2 class="section__title">Research<br>Interests</h2>
+    </div>
+    <div class="research__tags reveal">
+      <span class="tag">Paediatrics</span>
+      <span class="tag tag--accent">Paediatric Endocrinology</span>
+      <span class="tag">Clinical Epidemiology</span>
+      <span class="tag tag--green">Study Design</span>
+      <span class="tag">Systematic Reviews</span>
+      <span class="tag tag--accent">Statistics</span>
+      <span class="tag tag--green">Meta-Research</span>
+      <span class="tag">Open Science</span>
+      <span class="tag tag--accent">Equity</span>
+    </div>
+  </section>
+
+  <!-- Qualifications -->
+  <section class="section qualifications" id="qualifications">
+    <div class="section__header">
+      <span class="section__line-num mono" aria-hidden="true">004</span>
+      <span class="section__comment mono" aria-hidden="true">/* qualifications */</span>
+      <h2 class="section__title">Qualifications</h2>
+    </div>
+    <div class="qual__timeline">
+      <div class="qual__item reveal">
+        <div class="qual__marker" aria-hidden="true"></div>
+        <div class="qual__content">
+          <h3 class="qual__degree">Doctor of Philosophy (PhD)</h3>
+          <p class="qual__inst mono">University of Sydney</p>
+        </div>
+      </div>
+      <div class="qual__item reveal">
+        <div class="qual__marker" aria-hidden="true"></div>
+        <div class="qual__content">
+          <h3 class="qual__degree">Postgraduate Diploma in Surgical Anatomy</h3>
+          <p class="qual__inst mono">University of Otago</p>
+        </div>
+      </div>
+      <div class="qual__item reveal">
+        <div class="qual__marker" aria-hidden="true"></div>
+        <div class="qual__content">
+          <h3 class="qual__degree">Master of Medicine</h3>
+          <p class="qual__inst mono">University of Sydney</p>
+        </div>
+      </div>
+      <div class="qual__item reveal">
+        <div class="qual__marker" aria-hidden="true"></div>
+        <div class="qual__content">
+          <h3 class="qual__degree">Diploma in Child Health</h3>
+          <p class="qual__inst mono">University of Sydney</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Publications -->
+  <section class="section publications" id="publications" data-deco="Pubs">
+    <div class="section__header">
+      <span class="section__line-num mono" aria-hidden="true">005</span>
+      <span class="section__comment mono" aria-hidden="true">// publications.filter()</span>
+      <h2 class="section__title">Publications</h2>
+    </div>
+    <div class="pub__overview reveal">
+      <div class="pub__total">
+        <span class="pub__total-number">116</span>
+        <span class="pub__total-label mono">total outputs</span>
+      </div>
+      <div class="pub__categories">
+        <div class="pub__cat">
+          <span class="pub__cat-count">77</span>
+          <span class="pub__cat-name mono">Journal Articles</span>
+        </div>
+        <div class="pub__cat">
+          <span class="pub__cat-count">26</span>
+          <span class="pub__cat-name mono">Conferences</span>
+        </div>
+        <div class="pub__cat">
+          <span class="pub__cat-count">5</span>
+          <span class="pub__cat-name mono">Educational Resources</span>
+        </div>
+        <div class="pub__cat">
+          <span class="pub__cat-count">2</span>
+          <span class="pub__cat-name mono">Books</span>
+        </div>
+        <div class="pub__cat">
+          <span class="pub__cat-count">3</span>
+          <span class="pub__cat-name mono">Media</span>
+        </div>
+        <div class="pub__cat">
+          <span class="pub__cat-count">3</span>
+          <span class="pub__cat-name mono">Other</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub__search-wrap reveal">
+      <input type="text" class="pub__search" id="pubSearch" placeholder="Search publications..." aria-label="Search publications">
+    </div>
+
+    <div class="pub__list" id="pubList">
+      <article class="pub__item reveal" data-keywords="postoperative mortality surgery lancet">
+        <span class="pub__item-journal mono">The Lancet Regional Health</span>
+        <h3 class="pub__item-title">Postoperative mortality study</h3>
+        <p class="pub__item-desc">Large-scale analysis of postoperative mortality outcomes, contributing to improved surgical safety protocols and patient care standards.</p>
+        <span class="pub__item-type tag tag--small">Journal Article</span>
+      </article>
+      <article class="pub__item reveal" data-keywords="pharmacological obesity pregnancy drugs">
+        <span class="pub__item-journal mono">Drugs</span>
+        <h3 class="pub__item-title">Pharmacological management of obesity in pregnancy</h3>
+        <p class="pub__item-desc">Comprehensive review of pharmacological interventions for managing obesity during pregnancy, examining safety profiles and clinical efficacy.</p>
+        <span class="pub__item-type tag tag--small">Journal Article</span>
+      </article>
+      <article class="pub__item reveal" data-keywords="predicting opioid consumption surgery digital medicine">
+        <span class="pub__item-journal mono">npj Digital Medicine</span>
+        <h3 class="pub__item-title">Predicting opioid consumption after surgery</h3>
+        <p class="pub__item-desc">Development of predictive models for post-surgical opioid consumption using digital health methodologies and machine learning approaches.</p>
+        <span class="pub__item-type tag tag--small">Journal Article</span>
+      </article>
+    </div>
+
+    <div class="pub__cta reveal">
+      <a href="https://www.newcastle.edu.au/profile/richard-mcgee" target="_blank" rel="noopener noreferrer" class="btn btn--outline">
+        View full publication list <span class="mono" aria-hidden="true">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Grants & Funding -->
+  <section class="section grants" id="grants" data-deco="Grants">
+    <div class="section__header">
+      <span class="section__line-num mono" aria-hidden="true">006</span>
+      <span class="section__comment mono" aria-hidden="true">/* grants && funding */</span>
+      <h2 class="section__title">Grants &amp;<br>Funding</h2>
+    </div>
+    <div class="grants__total reveal">
+      <span class="grants__total-prefix mono">total_funding =</span>
+      <span class="grants__total-amount">$2.3M+</span>
+    </div>
+    <div class="grants__list">
+      <div class="grants__item reveal">
+        <div class="grants__year mono">2025</div>
+        <div class="grants__details">
+          <h3 class="grants__name">NHMRC Partnership Grant</h3>
+          <p class="grants__desc">National Health and Medical Research Council partnership funding for large-scale paediatric research.</p>
+        </div>
+        <div class="grants__amount">$1,320,116</div>
+        <div class="grants__bar" style="--bar-width: 100%;" aria-hidden="true"></div>
+      </div>
+      <div class="grants__item reveal">
+        <div class="grants__year mono">2023</div>
+        <div class="grants__details">
+          <h3 class="grants__name">SNAP3 Study</h3>
+          <p class="grants__desc">Multi-site study advancing paediatric surgical outcomes and safety measures.</p>
+        </div>
+        <div class="grants__amount">$404,852</div>
+        <div class="grants__bar" style="--bar-width: 30.7%;" aria-hidden="true"></div>
+      </div>
+      <div class="grants__item reveal">
+        <div class="grants__year mono">2022</div>
+        <div class="grants__details">
+          <h3 class="grants__name">Optimising Care Following Major Surgery</h3>
+          <p class="grants__desc">Research program focused on improving post-operative care pathways and patient recovery.</p>
+        </div>
+        <div class="grants__amount">$494,725</div>
+        <div class="grants__bar" style="--bar-width: 37.5%;" aria-hidden="true"></div>
+      </div>
+      <div class="grants__item reveal">
+        <div class="grants__year mono">2011</div>
+        <div class="grants__details">
+          <h3 class="grants__name">NHMRC Trials and Outcomes in Paediatric Surgery</h3>
+          <p class="grants__desc">Foundation grant supporting clinical trials infrastructure in paediatric surgical research.</p>
+        </div>
+        <div class="grants__amount">$80,937</div>
+        <div class="grants__bar" style="--bar-width: 6.1%;" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Awards -->
+  <section class="section awards" id="awards">
+    <div class="section__header">
+      <span class="section__line-num mono" aria-hidden="true">007</span>
+      <span class="section__comment mono" aria-hidden="true">// awards.sort(date)</span>
+      <h2 class="section__title">Awards</h2>
+    </div>
+    <div class="awards__list">
+      <div class="awards__item reveal">
+        <span class="awards__icon" aria-hidden="true">◆</span>
+        <div>
+          <h3 class="awards__name">Green Impact Awards — "Painting the Campus Green"</h3>
+          <span class="awards__meta mono">2022</span>
+        </div>
+      </div>
+      <div class="awards__item reveal">
+        <span class="awards__icon" aria-hidden="true">◆</span>
+        <div>
+          <h3 class="awards__name">Mid-Career Teaching Award</h3>
+          <span class="awards__meta mono">University of Newcastle</span>
+        </div>
+      </div>
+      <div class="awards__item reveal">
+        <span class="awards__icon" aria-hidden="true">◆</span>
+        <div>
+          <h3 class="awards__name">Clinical Leadership and Engagement Award</h3>
+          <span class="awards__meta mono">University of Newcastle</span>
+        </div>
+      </div>
+      <div class="awards__item reveal">
+        <span class="awards__icon" aria-hidden="true">◆</span>
+        <div>
+          <h3 class="awards__name">Kilhams and Lorimer Teaching Awards</h3>
+          <span class="awards__meta mono">Children's Hospital at Westmead</span>
+        </div>
+      </div>
+      <div class="awards__item reveal">
+        <span class="awards__icon" aria-hidden="true">◆</span>
+        <div>
+          <h3 class="awards__name">Young Investigator Award</h3>
+          <span class="awards__meta mono">Transplant Society of Australia &amp; New Zealand</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Teaching & Supervision -->
+  <section class="section teaching" id="teaching">
+    <div class="section__header">
+      <span class="section__line-num mono" aria-hidden="true">008</span>
+      <span class="section__comment mono" aria-hidden="true">/* teaching */</span>
+      <h2 class="section__title">Teaching &amp;<br>Supervision</h2>
+    </div>
+    <div class="teaching__grid">
+      <div class="teaching__card reveal">
+        <span class="teaching__card-icon mono" aria-hidden="true">&lt;/&gt;</span>
+        <h3>Integrated Medicine</h3>
+        <p>Teaching Integrated Medicine in the Faculty of Health and Medicine, University of Newcastle.</p>
+      </div>
+      <div class="teaching__card reveal">
+        <span class="teaching__card-icon mono" aria-hidden="true">[ ]</span>
+        <h3>Current Supervision</h3>
+        <p>Principal Supervisor for Nurse Practitioner research program.</p>
+      </div>
+      <div class="teaching__card reveal">
+        <span class="teaching__card-icon mono" aria-hidden="true">005</span>
+        <h3>Completed Supervisions</h3>
+        <p>5 successful postgraduate completions to date.</p>
+      </div>
+      <div class="teaching__card reveal">
+        <span class="teaching__card-icon mono" aria-hidden="true">RACP</span>
+        <h3>College Instructor</h3>
+        <p>Senior instructor for the Royal Australasian College of Physicians examination preparation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PhD Opportunities -->
+  <section class="section phd" id="phd" data-deco="PhD">
+    <div class="section__header">
+      <span class="section__line-num mono" aria-hidden="true">009</span>
+      <span class="section__comment mono" aria-hidden="true">// phd.openPositions(2026)</span>
+      <h2 class="section__title">PhD<br>Opportunities</h2>
+    </div>
+    <div class="phd__content">
+      <div class="phd__banner reveal">
+        <span class="phd__badge mono">Seeking students — 2026</span>
+        <p class="phd__intro">Expressions of interest are invited from prospective PhD candidates for the following research areas:</p>
+      </div>
+      <div class="phd__projects">
+        <div class="phd__project reveal">
+          <span class="phd__project-num mono" aria-hidden="true">01</span>
+          <div>
+            <h3>AI in Paediatric Type 1 Diabetes</h3>
+            <p>Exploring the application of artificial intelligence and machine learning to improve management and outcomes in paediatric Type 1 Diabetes.</p>
+          </div>
+        </div>
+        <div class="phd__project reveal">
+          <span class="phd__project-num mono" aria-hidden="true">02</span>
+          <div>
+            <h3>Paediatric Diabetes Diversity</h3>
+            <p>Investigating equity and diversity in paediatric diabetes care, with a focus on underrepresented and underserved populations.</p>
+          </div>
+        </div>
+      </div>
+      <div class="phd__cta reveal">
+        <a href="mailto:richard.mcgee@newcastle.edu.au?subject=PhD%20Expression%20of%20Interest" class="btn btn--primary">
+          Express Interest <span class="mono" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section contact" id="contact">
+    <div class="section__header">
+      <span class="section__line-num mono" aria-hidden="true">010</span>
+      <span class="section__comment mono" aria-hidden="true">/* connect */</span>
+      <h2 class="section__title">Contact</h2>
+    </div>
+    <div class="contact__grid">
+      <div class="contact__item reveal">
+        <span class="contact__label mono">email</span>
+        <a href="mailto:richard.mcgee@newcastle.edu.au" class="contact__value">richard.mcgee@newcastle.edu.au</a>
+      </div>
+      <div class="contact__item reveal">
+        <span class="contact__label mono">phone</span>
+        <a href="tel:0243484129" class="contact__value">02 4348 4129</a>
+      </div>
+      <div class="contact__item reveal">
+        <span class="contact__label mono">university</span>
+        <a href="https://www.newcastle.edu.au/profile/richard-mcgee" target="_blank" rel="noopener noreferrer" class="contact__value">University of Newcastle Profile <span class="mono">↗</span></a>
+      </div>
+      <div class="contact__item reveal">
+        <span class="contact__label mono">github</span>
+        <a href="https://github.com/richardmcgee" target="_blank" rel="noopener noreferrer" class="contact__value">github.com/richardmcgee <span class="mono">↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <span class="footer__copy">© 2026 Richard McGee</span>
+      <span class="footer__separator" aria-hidden="true">·</span>
+      <span class="footer__tagline mono">Built with code &amp; curiosity</span>
+    </div>
+  </footer>
+
+  <script src="./app.js"></script>
+</body>
+</html>
