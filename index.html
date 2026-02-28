@@ -93,7 +93,7 @@
       </div>
       <div class="about__col about__col--side reveal">
         <div class="about__stat">
-          <span class="about__stat-number">116</span>
+          <span class="about__stat-number" id="aboutPubCount">…</span>
           <span class="about__stat-label mono">publications</span>
         </div>
         <div class="about__stat">
@@ -182,39 +182,18 @@
   <section class="section publications" id="publications" data-deco="Pubs">
     <div class="section__header">
       <span class="section__line-num mono" aria-hidden="true">005</span>
-      <span class="section__comment mono" aria-hidden="true">// publications.filter()</span>
+      <span class="section__comment mono" aria-hidden="true">// publications.fetch(ORCID)</span>
       <h2 class="section__title">Publications</h2>
     </div>
     <div class="pub__overview reveal">
       <div class="pub__total">
-        <span class="pub__total-number">116</span>
-        <span class="pub__total-label mono">total outputs</span>
+        <span class="pub__total-number" id="pubCount">
+          <span class="pub__loading-dots">…</span>
+        </span>
+        <span class="pub__total-label mono">works via ORCID <span class="pub__live-dot" aria-hidden="true"></span></span>
       </div>
-      <div class="pub__categories">
-        <div class="pub__cat">
-          <span class="pub__cat-count">77</span>
-          <span class="pub__cat-name mono">Journal Articles</span>
-        </div>
-        <div class="pub__cat">
-          <span class="pub__cat-count">26</span>
-          <span class="pub__cat-name mono">Conferences</span>
-        </div>
-        <div class="pub__cat">
-          <span class="pub__cat-count">5</span>
-          <span class="pub__cat-name mono">Educational Resources</span>
-        </div>
-        <div class="pub__cat">
-          <span class="pub__cat-count">2</span>
-          <span class="pub__cat-name mono">Books</span>
-        </div>
-        <div class="pub__cat">
-          <span class="pub__cat-count">3</span>
-          <span class="pub__cat-name mono">Media</span>
-        </div>
-        <div class="pub__cat">
-          <span class="pub__cat-count">3</span>
-          <span class="pub__cat-name mono">Other</span>
-        </div>
+      <div class="pub__categories" id="pubCategories">
+        <!-- Dynamically populated -->
       </div>
     </div>
 
@@ -223,30 +202,25 @@
     </div>
 
     <div class="pub__list" id="pubList">
-      <article class="pub__item reveal" data-keywords="postoperative mortality surgery lancet">
-        <span class="pub__item-journal mono">The Lancet Regional Health</span>
-        <h3 class="pub__item-title">Postoperative mortality study</h3>
-        <p class="pub__item-desc">Large-scale analysis of postoperative mortality outcomes, contributing to improved surgical safety protocols and patient care standards.</p>
-        <span class="pub__item-type tag tag--small">Journal Article</span>
-      </article>
-      <article class="pub__item reveal" data-keywords="pharmacological obesity pregnancy drugs">
-        <span class="pub__item-journal mono">Drugs</span>
-        <h3 class="pub__item-title">Pharmacological management of obesity in pregnancy</h3>
-        <p class="pub__item-desc">Comprehensive review of pharmacological interventions for managing obesity during pregnancy, examining safety profiles and clinical efficacy.</p>
-        <span class="pub__item-type tag tag--small">Journal Article</span>
-      </article>
-      <article class="pub__item reveal" data-keywords="predicting opioid consumption surgery digital medicine">
-        <span class="pub__item-journal mono">npj Digital Medicine</span>
-        <h3 class="pub__item-title">Predicting opioid consumption after surgery</h3>
-        <p class="pub__item-desc">Development of predictive models for post-surgical opioid consumption using digital health methodologies and machine learning approaches.</p>
-        <span class="pub__item-type tag tag--small">Journal Article</span>
-      </article>
+      <!-- Dynamically populated from ORCID -->
+      <div class="pub__loading" id="pubLoading">
+        <span class="mono">Fetching from ORCID…</span>
+      </div>
     </div>
 
-    <div class="pub__cta reveal">
-      <a href="https://www.newcastle.edu.au/profile/richard-mcgee" target="_blank" rel="noopener noreferrer" class="btn btn--outline">
-        View full publication list <span class="mono" aria-hidden="true">→</span>
-      </a>
+    <div class="pub__profiles reveal">
+      <span class="pub__profiles-label mono">full profiles</span>
+      <div class="pub__profiles-links">
+        <a href="https://scholar.google.com/citations?user=o_HgOVcAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="btn btn--outline btn--sm">
+          Google Scholar <span class="mono" aria-hidden="true">↗</span>
+        </a>
+        <a href="https://orcid.org/0000-0002-3125-8253" target="_blank" rel="noopener noreferrer" class="btn btn--outline btn--sm">
+          ORCID <span class="mono" aria-hidden="true">↗</span>
+        </a>
+        <a href="https://www.newcastle.edu.au/profile/richard-mcgee" target="_blank" rel="noopener noreferrer" class="btn btn--outline btn--sm">
+          University Profile <span class="mono" aria-hidden="true">↗</span>
+        </a>
+      </div>
     </div>
   </section>
 

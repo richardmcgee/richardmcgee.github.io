@@ -1334,6 +1334,126 @@ a:hover {
   }
 }
 
+/* --- Publication Live Indicator --- */
+.pub__live-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  margin-left: 0.4rem;
+  vertical-align: middle;
+  animation: livePulse 2s ease-in-out infinite;
+}
+
+@keyframes livePulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+.pub__loading {
+  padding: 2rem 1.75rem;
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.82rem;
+}
+
+.pub__loading-dots {
+  animation: loadDots 1.5s ease-in-out infinite;
+}
+
+@keyframes loadDots {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.pub__item-year {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.pub__item-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 0.4rem;
+}
+
+.pub__item-doi {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  margin-top: 0.5rem;
+  transition: color 0.3s;
+  text-decoration: none;
+}
+
+.pub__item-doi:hover {
+  color: var(--accent);
+  opacity: 1;
+}
+
+.pub__profiles {
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--border-light);
+}
+
+.pub__profiles-label {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+  text-transform: lowercase;
+  margin-bottom: var(--space-sm);
+}
+
+.pub__profiles-links {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.btn--sm {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.72rem;
+}
+
+.pub__error {
+  padding: 1.5rem 1.75rem;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.pub__show-more {
+  text-align: center;
+  padding: var(--space-sm) 0;
+}
+
+.pub__show-more-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  padding: 0.7rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: border-color 0.3s var(--ease-out), color 0.3s var(--ease-out);
+  letter-spacing: 0.03em;
+}
+
+.pub__show-more-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 /* --- Easter Egg Toast --- */
 .easter-toast {
   position: fixed;

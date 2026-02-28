@@ -231,24 +231,189 @@
   });
 
 
+  // ── ORCID Publications Fetch ──────────────────────────────
+  const ORCID_ID = '0000-0002-3125-8253';
+  const ORCID_API = `https://pub.orcid.org/v3.0/${ORCID_ID}/works`;
+  const INITIAL_SHOW = 10;
+  let allWorks = [];
+  let showCount = INITIAL_SHOW;
+
+  async function fetchORCID() {
+    try {
+      const resp = await fetch(ORCID_API, {
+        headers: { 'Accept': 'application/json' }
+      });
+      if (!resp.ok) throw new Error(`ORCID API returned ${resp.status}`);
+      const data = await resp.json();
+      const groups = data.group || [];
+
+      // Deduplicate: take the first (preferred) summary from each group
+      allWorks = groups.map(g => {
+        const ws = g['work-summary'][0];
+        const title = ws.title && ws.title.title ? ws.title.title.value : 'Untitled';
+        const journal = ws['journal-title'] ? ws['journal-title'].value : '';
+        const type = ws.type || 'other';
+        const pubDate = ws['publication-date'] || {};
+        const year = pubDate.year ? pubDate.year.value : '';
+        const month = pubDate.month ? pubDate.month.value : '';
+        const eids = (ws['external-ids'] && ws['external-ids']['external-id']) || [];
+        const doiObj = eids.find(e => e['external-id-type'] === 'doi');
+        const doi = doiObj ? doiObj['external-id-value'] : '';
+        return { title, journal, type, year, month, doi };
+      });
+
+      // Sort by date (newest first)
+      allWorks.sort((a, b) => {
+        const dateA = parseInt(a.year || '0') * 100 + parseInt(a.month || '0');
+        const dateB = parseInt(b.year || '0') * 100 + parseInt(b.month || '0');
+        return dateB - dateA;
+      });
+
+      renderPublications();
+    } catch (err) {
+      console.warn('ORCID fetch failed:', err);
+      showFallback();
+    }
+  }
+
+  function renderPublications() {
+    // Update count in publications section
+    const countEl = document.getElementById('pubCount');
+    if (countEl) countEl.textContent = allWorks.length;
+
+    // Update count in about section
+    const aboutCountEl = document.getElementById('aboutPubCount');
+    if (aboutCountEl) aboutCountEl.textContent = allWorks.length;
+
+    // Build category counts
+    const catMap = {};
+    allWorks.forEach(w => {
+      const label = formatType(w.type);
+      catMap[label] = (catMap[label] || 0) + 1;
+    });
+    const catEl = document.getElementById('pubCategories');
+    if (catEl) {
+      catEl.innerHTML = Object.entries(catMap)
+        .sort((a, b) => b[1] - a[1])
+        .map(([name, count]) => `
+          <div class="pub__cat">
+            <span class="pub__cat-count">${count}</span>
+            <span class="pub__cat-name mono">${name}</span>
+          </div>
+        `).join('');
+    }
+
+    // Render work list
+    renderWorkList();
+  }
+
+  function renderWorkList(filter) {
+    const listEl = document.getElementById('pubList');
+    if (!listEl) return;
+
+    let filtered = allWorks;
+    if (filter) {
+      const q = filter.toLowerCase();
+      filtered = allWorks.filter(w =>
+        w.title.toLowerCase().includes(q) ||
+        w.journal.toLowerCase().includes(q) ||
+        w.type.toLowerCase().includes(q) ||
+        w.year.includes(q)
+      );
+    }
+
+    const toShow = filter ? filtered : filtered.slice(0, showCount);
+    const remaining = filter ? 0 : Math.max(0, filtered.length - showCount);
+
+    let html = toShow.map(w => {
+      const doiLink = w.doi
+        ? `<a href="https://doi.org/${w.doi}" target="_blank" rel="noopener noreferrer" class="pub__item-doi">doi: ${w.doi} \u2197</a>`
+        : '';
+      return `
+        <article class="pub__item visible" data-keywords="${w.title.toLowerCase()}">
+          <div class="pub__item-header">
+            <span class="pub__item-journal mono">${w.journal || 'Publication'}</span>
+            <span class="pub__item-year">${w.year}${w.month ? '.' + w.month : ''}</span>
+          </div>
+          <h3 class="pub__item-title">${w.title}</h3>
+          <span class="pub__item-type tag tag--small">${formatType(w.type)}</span>
+          ${doiLink}
+        </article>
+      `;
+    }).join('');
+
+    if (!filter && remaining > 0) {
+      html += `
+        <div class="pub__show-more">
+          <button class="pub__show-more-btn" id="showMoreBtn">
+            Show ${Math.min(remaining, 10)} more of ${filtered.length} works
+          </button>
+        </div>
+      `;
+    }
+
+    if (toShow.length === 0) {
+      html = '<div class="pub__error">No publications match your search.</div>';
+    }
+
+    listEl.innerHTML = html;
+
+    // Attach show more handler
+    const moreBtn = document.getElementById('showMoreBtn');
+    if (moreBtn) {
+      moreBtn.addEventListener('click', () => {
+        showCount += 10;
+        renderWorkList();
+      });
+    }
+  }
+
+  function formatType(type) {
+    const map = {
+      'journal-article': 'Journal Article',
+      'book': 'Book',
+      'book-chapter': 'Book Chapter',
+      'conference-paper': 'Conference',
+      'dissertation': 'Dissertation',
+      'report': 'Report',
+      'review': 'Review',
+      'other': 'Other'
+    };
+    return map[type] || type.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+  }
+
+  function showFallback() {
+    const listEl = document.getElementById('pubList');
+    const countEl = document.getElementById('pubCount');
+    const aboutCountEl = document.getElementById('aboutPubCount');
+    if (countEl) countEl.textContent = '50+';
+    if (aboutCountEl) aboutCountEl.textContent = '50+';
+    if (listEl) {
+      listEl.innerHTML = `
+        <div class="pub__error">
+          Could not fetch live data from ORCID. View publications on
+          <a href="https://scholar.google.com/citations?user=o_HgOVcAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a> or
+          <a href="https://orcid.org/0000-0002-3125-8253" target="_blank" rel="noopener noreferrer">ORCID</a>.
+        </div>
+      `;
+    }
+  }
+
+  // Kick off the fetch
+  fetchORCID();
+
+
   // ── Publication Search ─────────────────────────────────────
   const pubSearch = document.getElementById('pubSearch');
-  const pubItems = document.querySelectorAll('.pub__item');
+  let searchDebounce;
 
   pubSearch.addEventListener('input', (e) => {
-    const query = e.target.value.toLowerCase().trim();
-    pubItems.forEach(item => {
-      const title = item.querySelector('.pub__item-title').textContent.toLowerCase();
-      const journal = item.querySelector('.pub__item-journal').textContent.toLowerCase();
-      const keywords = (item.dataset.keywords || '').toLowerCase();
-      const desc = item.querySelector('.pub__item-desc').textContent.toLowerCase();
-      const match = !query || 
-        title.includes(query) || 
-        journal.includes(query) || 
-        keywords.includes(query) ||
-        desc.includes(query);
-      item.classList.toggle('hidden', !match);
-    });
+    clearTimeout(searchDebounce);
+    searchDebounce = setTimeout(() => {
+      const query = e.target.value.trim();
+      showCount = INITIAL_SHOW;
+      renderWorkList(query || null);
+    }, 250);
   });
 
 
